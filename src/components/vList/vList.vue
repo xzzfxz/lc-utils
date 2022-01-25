@@ -33,7 +33,6 @@ const props = defineProps({
         default: 1
     }
 })
-console.log(props.dataLength);
 const listContainer = ref<HTMLElement | null>(null);
 let startIndex = ref(0);
 
@@ -43,7 +42,6 @@ const endIndex = computed(() => {
     if (startIndex.value > props.size * props.page) {
         index = startIndex.value;
     }
-    console.log('@@@@@@@@@@@@@@', index + props.size + props.size * props.page);
     return index + props.size + props.size * props.page;
 });
 
@@ -61,7 +59,6 @@ const listStyle = computed(() => {
 });
 
 watch([startIndex, endIndex], (val) => {
-    console.log(val);
     let index = 0;
     const startIndex = val[0];
     if (startIndex > props.size * props.page) {
@@ -72,8 +69,10 @@ watch([startIndex, endIndex], (val) => {
 
 // 容器滚动
 const handleScroll = () => {
-    const scrollTop = listContainer.value?.scrollTop || 0;
-    startIndex.value = Math.floor(scrollTop / props.itemHeight);
+    window.requestAnimationFrame(() => {
+        const scrollTop = listContainer.value?.scrollTop || 0;
+        startIndex.value = Math.floor(scrollTop / props.itemHeight);
+    });
 }
 </script>
 

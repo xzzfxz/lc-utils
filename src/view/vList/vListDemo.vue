@@ -20,7 +20,6 @@ for (let i = 0; i < 500; i++) {
 
 // 索引改变
 const handleIndexChange = (start: number, end: number) => {
-    // console.log(start, end);
     startIndex.value = start;
     endIndex.value = end;
 }
