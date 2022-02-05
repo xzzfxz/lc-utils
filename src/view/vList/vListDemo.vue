@@ -1,21 +1,22 @@
 <template>
     <div class="container-demo">
-        <v-list @indexChange="handleIndexChange" :dataLength="data.length">
+        <v-list @indexChange="handleIndexChange" :dataLength="data.list.length">
             <div class="v-list-item" v-for="item in lastData" :key="item">{{ item }}</div>
         </v-list>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed, ref, reactive } from 'vue';
 import vList from '@/components/vList/vList.vue';
 
 const startIndex = ref(0);
 const endIndex = ref(6);
 // 原始数据
-const data: number[] = [];
+const data = reactive<{ list: number[] }>({ list: [] });
+
 for (let i = 0; i < 500; i++) {
-    data.push(i);
+    data.list.push(i);
 }
 
 // 索引改变
@@ -27,7 +28,7 @@ const handleIndexChange = (start: number, end: number) => {
 
 // 截取显示的数据
 const lastData = computed(() => {
-    return data.slice(startIndex.value, endIndex.value);
+    return data.list.slice(startIndex.value, endIndex.value);
 })
 
 

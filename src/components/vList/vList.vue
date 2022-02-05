@@ -34,7 +34,7 @@ const props = defineProps({
     }
 })
 const listContainer = ref<HTMLElement | null>(null);
-let startIndex = ref(0);
+const startIndex = ref(0);
 
 // 结束索引
 const endIndex = computed(() => {
@@ -66,6 +66,13 @@ watch([startIndex, endIndex], (val) => {
     }
     emit('indexChange', index, val[1]);
 });
+
+// 重置startIndex
+watch(() => props.dataLength, (val, old) => {
+    if (val < old) {
+        startIndex.value = 0;
+    }
+})
 
 // 容器滚动
 const handleScroll = () => {
