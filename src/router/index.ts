@@ -8,6 +8,11 @@ const routes: RouteRecordRaw[] = [
     name: "vList",
     component: () => import("@/view/vList/vListDemo.vue"),
   },
+  {
+    path: "/test",
+    name: "test",
+    component: () => import("@/view/demo/test.vue"),
+  },
 ];
 
 const router = createRouter({
