@@ -13,6 +13,11 @@ const routes: RouteRecordRaw[] = [
     name: "test",
     component: () => import("@/view/demo/test.vue"),
   },
+  {
+    path: "/contextmenu",
+    name: "contextmenu",
+    component: () => import("@/view/contextmenu/index.vue"),
+  },
 ];
 
 const router = createRouter({
