@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { reactive, ref, computed, onMounted, onBeforeUnmount } from 'vue';
 
-const emit = defineEmits(["itemClick"]);
+const emit = defineEmits(['itemClick']);
 
 const rightItem = ref<HTMLDivElement>();
 const rightDiv = ref<HTMLDivElement>();
@@ -25,18 +25,20 @@ const showRightDiv = ref(false);
 
 const state = reactive({
   left: 10,
+  top: 10,
 });
 
 // 右键弹窗位置
 const rightDivStyle = computed(() => {
-  return { left: state.left + "px", top: "50%" };
+  return { left: state.left + 'px', top: state.top + 'px' };
 });
 
 // 右键显示弹窗
 const handleRightClick = (e: any) => {
   e.preventDefault();
   const bound = rightItem.value?.getBoundingClientRect() as DOMRect;
-  state.left = e.pageX - bound?.x + 10;
+  state.left = e.pageX - bound?.x + 5;
+  state.top = e.pageY - bound?.y + 5;
   showRightDiv.value = true;
 };
 
@@ -51,7 +53,7 @@ const handleCloseRightDiv = (e: Event) => {
 
 // 点击右键中的选项
 const handleItemClick = () => {
-  emit("itemClick");
+  emit('itemClick');
 };
 
 // 关闭弹窗
@@ -62,10 +64,10 @@ const hide = () => {
 defineExpose({ hide });
 
 onMounted(() => {
-  document.addEventListener("click", handleCloseRightDiv);
+  document.addEventListener('click', handleCloseRightDiv);
 });
 onBeforeUnmount(() => {
-  document.removeEventListener("click", handleCloseRightDiv);
+  document.removeEventListener('click', handleCloseRightDiv);
 });
 </script>
 
