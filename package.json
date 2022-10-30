@@ -9,9 +9,11 @@
   "dependencies": {
     "@types/node": "^17.0.10",
     "ant-design-vue": "^3.1.1",
+    "consola": "^2.15.3",
     "sass": "^1.49.0",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vxe-table": "^4.3.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
@@ -19,6 +21,7 @@
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
     "vite-plugin-importer": "^0.2.5",
+    "vite-plugin-style-import": "^2.0.0",
     "vue-tsc": "^0.29.8"
   }
 }
