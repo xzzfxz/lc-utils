@@ -8,12 +8,13 @@
   },
   "dependencies": {
     "@types/node": "^17.0.10",
-    "ant-design-vue": "^3.1.1",
+    "ant-design-vue": "3.2.14",
     "consola": "^2.15.3",
     "sass": "^1.49.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12",
-    "vxe-table": "^4.3.5"
+    "vxe-table": "^4.3.5",
+    "xe-utils": "^3.5.7"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
